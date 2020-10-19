@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://rajmund123:rajmund123@fotorentalcluster.ddhnb.mongodb.net/<dbname>?retryWrites=true&w=majority"
+}
