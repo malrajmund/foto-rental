@@ -27,20 +27,27 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     streetNumber: {
-        type: Int8Array,
+        type: Number,
         required: true
     },
-    code:{
-        type: Int8Array,
+    postCode:{
+        type: Number,
         required: true
     },
     phoneNumber:{
-        type: Int8Array,
+        type: Number,
         required: true
     },
     password:{
         type: String,
         required: true
+    },
+    avatar: {
+        type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 
