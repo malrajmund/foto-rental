@@ -1,12 +1,14 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { FormGroup, Input, Label, Button, Form, Jumbotron, Container, Row, Col, Alert } from 'reactstrap'
+
+import '../../stylesheets/Register.css'
 
 const Register = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
-        province: '',
         town: '', 
         street: '',
         streetNumber: '', 
@@ -20,7 +22,6 @@ const Register = () => {
         firstName, 
         lastName, 
         email, 
-        province, 
         town, 
         street, 
         streetNumber, 
@@ -44,87 +45,117 @@ const Register = () => {
 
     return (
     <Fragment>
-      <h1 className="large text-primary">Zarejestruj sie</h1>
-      <p className="lead"><i className="fas fa-user"></i> Stwórz konto</p>
-      <form className="form" onSubmit = {e => onSubmit(e)}>
-        <div className="form-group">
-          <input
-           type="text" 
-           placeholder="Imie" 
-           name="firstName" 
-           value = {firstName}
-           onChange = { e => onChange(e)}
-           required />
-        </div>
-        <div className="form-group">
-          <input type="text" placeholder="Nazwisko" name="lastName" value = {lastName}
-           onChange = { e => onChange(e)}
-           required />
-        </div>
-        <div className="form-group">
-          <input type="email" placeholder="Email" name="email" value = {email}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-        <div className="form-group">
-          <input type="province" placeholder="Województwo" name="province" value = {province}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-        <div className="form-group">
-          <input type="town" placeholder="Miasto" name="town" value = {town}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-        <div className="form-group">
-          <input type="street" placeholder="Ulica" name="street" value = {street}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-        <div className="form-group">
-          <input type="streetNumber" placeholder="Numer domu" name="streetNumber" value = {streetNumber}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-        <div className="form-group">
-          <input type="postCode" placeholder="Kod pocztowy" name="postCode" value = {postCode}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-        <div className="form-group">
-          <input type="phoneNumber" placeholder="Numer telefonu" name="phoneNumber" value = {phoneNumber}
-           onChange = { e => onChange(e)}
-           required/>
-        </div>
-
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            minLength="6"
-            value = {password}
-            onChange = { e => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="password2"
-            minLength="6"
-            value = {password2}
-            onChange = { e => onChange(e)}
-            required
-          />
-        </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
-      </form>
       <p className="my-1">
         Masz konto? <Link to="/login">Zaloguj się</Link>
       </p>
+      <div>
+            <Jumbotron className="jumbotron" fluid>
+                <Container fluid>
+                    <Row>
+                        <Col sm="2"></Col>
+                        <Col xs="auto">
+                            <h3>Dołącz do FotoRental</h3>
+                        </Col>
+                    </Row>
+                </Container>
+            </Jumbotron>
+            <div className='login_form'>
+                <Form onSubmit = {e => onSubmit(e)}>
+                    <div className='login_form_items'>
+                        <Row>
+                            <Col className='column' md='6'>
+                                <FormGroup>
+                                    <Label for="firstName">*Imię:</Label>
+                                    <Input type='text' name="firstName" id="firstName" placeholder="Imię" value = {firstName}
+           onChange = { e => onChange(e)} />
+                                </FormGroup>
+                            </Col>
+                            <Col className='column' md='6'>
+                                <FormGroup>
+                                    <Label for="lastName">*Nazwisko:</Label>
+                                    <Input type='text' name="lastName" id="lastName" placeholder="Nazwisko" value = {lastName}
+           onChange = { e => onChange(e)} />
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className='column' sm='12'>
+                                <FormGroup>
+                                    <Label for="email">*Adres Email:</Label>
+                                    <Input type="email" name="email" id="email" placeholder="Email" value = {email}
+           onChange = { e => onChange(e)}/>
+                                    <small>Na ten adres będziesz otrzymywał wszystkie powiadomienia.</small>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="password">*Hasło:</Label>
+                                    <Input className='' type="password" name="password" id="password" placeholder="Hasło" value = {password}
+           onChange = { e => onChange(e)}/>
+                                    <small>Użyj 8 znaków, w tym: 1 wielkiej litery, 1 małej litery, 1 cyfry.</small>
+                                    <Label for="password2">*Hasło:</Label>
+                                    <Input className='' type="password" name="password2" id="password2" placeholder="Potwierdź hasło" value = {password2}
+           onChange = { e => onChange(e)}/>
+                                    
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md='7' className='column'>
+                                <FormGroup>
+                                    <Label for='town'>*Miejscowość:</Label>
+                                    <Input type='text' name='town' id='town' placeholder='Miejscowość' value = {town}
+           onChange = { e => onChange(e)}/>
+                                </FormGroup>
+                            </Col>
+                            <Col md='5' className='column'>
+                                <FormGroup>
+                                    <Label for='postCode'>*Kod pocztowy:</Label>
+                                    <Input type='text' name='postCode' id='postCode' placeholder='xx-xxx' value = {postCode}
+           onChange = { e => onChange(e)}/>
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md='7' className='column'>
+                                <FormGroup>
+                                    <Label for='street'>*Ulica:</Label>
+                                    <Input type='text' name='street' id='street' placeholder='Ulica' value = {street}
+           onChange = { e => onChange(e)}/>
+                                </FormGroup>
+                            </Col>
+                            <Col md='5' className='column'>
+                                <FormGroup>
+                                    <Label for='streetNumber'>*Nr domu/Nr lokalu:</Label>
+                                    <Input type='text' name='streetNumber' id='streetNumber' placeholder='Nr domu/Nr lokalu' value = {streetNumber}
+           onChange = { e => onChange(e)}/>
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className='column' sm='12'>
+                                <FormGroup>
+                                    <Label for='phoneNumber'>*Nr telefonu:</Label>
+                                    <Input type='tel' name='phoneNumber' id='phoneNumber' placeholder='' value = {phoneNumber}
+           onChange = { e => onChange(e)}/>
+                                    <small>Nie udostępnimy Twojego adresu ani numeru nikomu, bez Twojej zgody.</small>
+                                </FormGroup>
+                                <div className='smalltext'>
+                                    <small>*wymagane</small>
+                                </div>
+                                <Label for='submit_button'>
+                                    <small>Klikając przycisk zarejestruj się, akceptuję <a className='link' href='/regulamin'>Regulamin</a></small>
+                                </Label>
+                                <Button className='submit_button' type="submit" >Zarejestruj się</Button>
+                                <div>
+                                    Masz już konto? <a className='link' href='/login'>Zaloguj się</a>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </Form>
+            </div>
+        </div>
     </Fragment>
+  
     )
 }
 
