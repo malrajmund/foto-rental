@@ -1,10 +1,15 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { FormGroup, Input, Label, Button, Form, Jumbotron, Container, Row, Col, Alert } from 'reactstrap'
+import { FormGroup, Input, Label, Button, Form, Jumbotron, Container, Row, Col } from 'reactstrap'
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types'
+import Alert from '../layout/Alert';
 
 import '../../stylesheets/Register.css'
 
-const Register = () => {
+const Register = ({ setAlert, register }) => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -36,20 +41,27 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         if(password !== password2){
-            console.log('Passwords doesnt match');
+            setAlert('Hasła nie zgadzają się!', 'danger');
         } else {
-           console.log('Success');
+            register({ 
+                firstName, 
+                lastName, 
+                email, 
+                town, 
+                street, 
+                streetNumber, 
+                postCode, 
+                phoneNumber, 
+                password,  
+            })
         }
     }
 
 
     return (
     <Fragment>
-      <p className="my-1">
-        Masz konto? <Link to="/login">Zaloguj się</Link>
-      </p>
-      <div>
-            <Jumbotron className="jumbotron" fluid>
+      
+            <Jumbotron className="registerJumbotron" fluid>
                 <Container fluid>
                     <Row>
                         <Col sm="2"></Col>
@@ -59,7 +71,9 @@ const Register = () => {
                     </Row>
                 </Container>
             </Jumbotron>
+            
             <div className='login_form'>
+            <Alert/>
                 <Form onSubmit = {e => onSubmit(e)}>
                     <div className='login_form_items'>
                         <Row>
@@ -91,7 +105,7 @@ const Register = () => {
                                     <Input className='' type="password" name="password" id="password" placeholder="Hasło" value = {password}
            onChange = { e => onChange(e)}/>
                                     <small>Użyj 8 znaków, w tym: 1 wielkiej litery, 1 małej litery, 1 cyfry.</small>
-                                    <Label for="password2">*Hasło:</Label>
+                                    <Label for="password2">*Potwierdź hasło:</Label>
                                     <Input className='' type="password" name="password2" id="password2" placeholder="Potwierdź hasło" value = {password2}
            onChange = { e => onChange(e)}/>
                                     
@@ -153,10 +167,18 @@ const Register = () => {
                     </div>
                 </Form>
             </div>
-        </div>
+        
     </Fragment>
   
     )
+};
+
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
 }
 
-export default Register
+export default connect(
+    null,
+     { setAlert, register }
+)(Register);

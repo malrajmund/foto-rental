@@ -35,7 +35,7 @@ const ProfileSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    },
+    },/*
     reviews: [
         {
             user: {
@@ -61,7 +61,7 @@ const ProfileSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ]
+    ]*/
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

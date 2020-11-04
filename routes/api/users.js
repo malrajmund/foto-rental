@@ -29,14 +29,14 @@ async (req, res) => {
             .json({ errors: errors.array() });
     }
     //Destrukturyzacja obiektu req.body
-    const { firstName, lastName, email, province, town, street, streetNumber, postCode, phoneNumber, password } = req.body;
+    const { firstName, lastName, email, town, street, streetNumber, postCode, phoneNumber, password } = req.body;
 
     try{
         let user = await User.findOne({ email });
         if(user){
             return res
                 .status(400)
-                .json( {errors: [{ msg: 'User already exists'}]});
+                .json( {errors: [{ msg: 'Użytkownik już istnieje w bazie danych!'}]});
         }
         const avatar = gravatar.url(email, {
             s: '200',
@@ -48,7 +48,6 @@ async (req, res) => {
             firstName,
             lastName,
             email,
-            province,
             town,
             street,
             streetNumber,

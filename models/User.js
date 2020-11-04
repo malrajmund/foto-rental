@@ -14,10 +14,6 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    province: {
-        type: String,
-        required: true
-    },
     town: {
         type: String,
         required: true,
@@ -27,11 +23,11 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     streetNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     postCode:{
-        type: Number,
+        type: String,
         required: true
     },
     phoneNumber:{
