@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import search_img from '../../img/icons/baseline_search_black_18dp.png';
 import cart_img from '../../img/icons/baseline_shopping_cart_black_18dp.png';
 import logo_img from '../../img/icons/logo.png';
-import { Link } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
