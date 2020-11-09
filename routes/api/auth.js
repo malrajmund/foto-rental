@@ -23,9 +23,9 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.post('/',  [
-    check('password', 'Haslo jest wymagane!').exists(),
-    check('email', 'Wprowadz email!').isEmail()
+router.post('/',  [  
+    check('email', 'Wprowadz email!').isEmail(),
+    check('password', 'Haslo jest wymagane!').exists()
     //TODO - reszta walidacji
 ], 
 async (req, res) => {
@@ -41,6 +41,7 @@ async (req, res) => {
 
     try{
         let user = await User.findOne({ email });
+        console.log(user)
         if(!user){
             return res
                 .status(400)
