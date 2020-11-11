@@ -1,0 +1,62 @@
+.jumbo_offer{
+    padding: 5% !important;
+    margin-top: 5%;
+}
+.new_offer_form{
+    margin: auto;
+    width: 60%;
+    max-width: 800px;
+    min-width: 450px;
+}
+.item_temp {
+    position: relative;
+    padding: 0% !important;
+    margin: 5px;
+    display: inline-block;
+}
+.img_back{
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    padding-top: 33%;
+}
+.item_temp .img_back{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.item_temp:hover .img_back{
+    display: inline;
+}
+.item_temp:hover .img_top{
+    opacity: 0;
+}
+.add_photo{
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+}
+.link{
+    font-weight: 500;
+    color: black !important;
+}
+.submit_form{
+    margin: auto;
+    margin-top: 20px;
+    width: 60%;
+    min-width: 300px;
+}
+.submit_button {
+    background-color: #109E9E !important;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 100%;
+}
+Label{
+    margin-bottom: 3px !important;
+}
+.smalltext{
+    margin-bottom: 10px;
+}

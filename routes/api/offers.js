@@ -3,7 +3,9 @@ const router = express.Router();
 const { check, validationResault, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const multer = require('multer'); 
+const upload = multer({ dest: 'uploads/' })
 const fs = require('fs'); 
+const fileUpload = require('express-fileupload')
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -24,8 +26,11 @@ router.post('/',
             check('image', 'Zdjecie jest wymagane!')
                 .not()
                 .isEmpty()
+
         ]
-    ],
+    ], 
+    upload.single("file")
+    ,
     async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
@@ -44,10 +49,7 @@ router.post('/',
                 avatar: user.avatar,
                 pricePerDay: req.body.pricePerDay,
                 user: req.user.id,
-                image: {
-                    data: fs.readFileSync(imgPath),
-                    contentType: 'image/png'
-                }
+                image: fs.readFileSync(req.file.path)
             });
 
             const offer = await newOffer.save();

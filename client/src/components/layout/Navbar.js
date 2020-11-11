@@ -18,10 +18,14 @@ import {
 
 const NavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
-
-        <NavItem>
-              <NavLink onClick={logout} href="#!">Wyloguj</NavLink>
-        </NavItem>
+        <Fragment>
+          <NavItem>
+                <NavLink onClick={logout} href="">Wyloguj</NavLink>
+          </NavItem>
+          <NavItem>
+                <NavLink href="/OfferForm">Dodaj oferte</NavLink>
+          </NavItem>
+        </Fragment>
 
     );
 

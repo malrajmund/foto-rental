@@ -7,3 +7,6 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+export const GET_OFFERS = 'GET_OFFERS';
+export const OFFER_ERROR =  'OFFER_ERROR';
+export const ADD_OFFER = 'ADD_OFFER'

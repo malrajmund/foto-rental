@@ -13,9 +13,6 @@ const OfferSchema = new Schema({
     offerName: {
         type: String
     },
-    name: {
-        type: String,
-    },
     avatar:{
         type: String
     },

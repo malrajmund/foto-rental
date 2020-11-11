@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Offers from '../offers/Offers'
 
 const Landing = () => {
     return (
@@ -16,6 +17,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
+      <Offers/>
     </section>
     )
 }
