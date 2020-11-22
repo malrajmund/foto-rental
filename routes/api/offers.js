@@ -45,7 +45,6 @@ router.post(
     );*/
     try {
       const user = await User.findById(req.user.id).select("-password");
-
       const newOffer = new Offer({
         text: req.body.text,
         name: user.name,
@@ -107,9 +106,7 @@ router.get("/:id", async (req, res) => {
 // @access  Public
 router.get("/myOffers/:id", async (req, res) => {
   try {
-    console.log(req.params.id);
     const offers = await Offer.find({ user: req.params.id });
-
     res.json(offers);
   } catch (err) {
     console.error(err.message);
@@ -120,7 +117,7 @@ router.get("/myOffers/:id", async (req, res) => {
 // @route   Delete api/offers/:id
 // @desc    Usun oferte
 // @access  Private
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/myOffers/:id", auth, async (req, res) => {
   try {
     const offer = await Offer.findById(req.params.id);
     if (!offer) {

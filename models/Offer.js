@@ -38,6 +38,9 @@ const OfferSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  reserved: {
+    type: Array,
+  },
 });
 
 module.exports = Offer = mongoose.model("offer", OfferSchema);

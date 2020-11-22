@@ -28,7 +28,9 @@ const NavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <NavItem>
         <NavLink href='/OfferForm'>Dodaj oferte</NavLink>
       </NavItem>
-      <NavItem></NavItem>
+      <NavItem>
+        <NavLink href='/dashboard'>Dashboard</NavLink>
+      </NavItem>
     </Fragment>
   );
 
@@ -78,7 +80,6 @@ const NavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
 NavBar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

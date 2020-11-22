@@ -1,14 +1,19 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getUserOffers } from "../../actions/offer";
+import { getUserOffers, deleteOffer } from "../../actions/offer";
 import { Spinner } from "reactstrap";
 import offer from "../../reducers/offer";
 import OfferItem from "./OfferItem";
+import Alert from "../layout/Alert";
 
-const Offers = ({ getUserOffers, offer: { offers, loading }, match }) => {
+const Offers = ({
+  getUserOffers,
+  deleteOffer,
+  offer: { offers, loading },
+  match,
+}) => {
   useEffect(() => {
-    console.log(match.params.id);
     getUserOffers(match.params.id);
   }, [getUserOffers]);
 
@@ -16,6 +21,7 @@ const Offers = ({ getUserOffers, offer: { offers, loading }, match }) => {
     <Spinner color='primary' />
   ) : (
     <Fragment>
+      <Alert />
       <h1>Oferty: </h1>
       <div className='offers'>
         {offers.map((offer) => (
@@ -29,10 +35,11 @@ const Offers = ({ getUserOffers, offer: { offers, loading }, match }) => {
 Offers.propTypes = {
   getUserOffers: PropTypes.func.isRequired,
   offer: PropTypes.object.isRequired,
+  deleteOffer: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   offer: state.offer,
 });
 
-export default connect(mapStateToProps, { getUserOffers })(Offers);
+export default connect(mapStateToProps, { getUserOffers, deleteOffer })(Offers);
