@@ -1,13 +1,12 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { deleteOffer, reserveOffer } from "../../actions/offer";
+import { deleteOffer } from "../../actions/offer";
 import { Link } from "react-router-dom";
 
 const OfferItem = ({
   auth,
   deleteOffer,
-  reserveOffer,
   offer: { _id, text, offerName, name, avatar, pricePerDay, file, date },
 }) => {
   return (
@@ -17,6 +16,7 @@ const OfferItem = ({
         <div>Nazwa: {offerName}</div>
         <div>Cena za dzien: {pricePerDay}</div>
         <div>Data dodania: {date}</div>
+        <div>Imie i nazwisko: {name}</div>
         <img
           width='250px'
           height='250px'
@@ -38,13 +38,10 @@ OfferItem.propTypes = {
   offer: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   deleteOffer: PropTypes.func.isRequired,
-  reserveOffer: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { deleteOffer, reserveOffer })(
-  OfferItem
-);
+export default connect(mapStateToProps, { deleteOffer })(OfferItem);

@@ -10,7 +10,7 @@ import Alert from "../layout/Alert";
 const Offers = ({
   getUserOffers,
   deleteOffer,
-  offer: { offers, loading },
+  offer: { _id, offers, loading },
   match,
 }) => {
   useEffect(() => {

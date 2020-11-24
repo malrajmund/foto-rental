@@ -6,7 +6,7 @@ import {
   ADD_OFFER,
   GET_USER_OFFERS,
   DELETE_OFFER,
-  RESERVE_OFFER,
+  GET_OFFER,
 } from "./types";
 
 export const getOffers = () => async (dispatch) => {
@@ -16,6 +16,22 @@ export const getOffers = () => async (dispatch) => {
       type: GET_OFFERS,
       payload: res.data,
     });
+  } catch (err) {
+    dispatch({
+      type: OFFER_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const getOffer = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/offers/${id}`);
+    dispatch({
+      type: GET_OFFER,
+      payload: res.data,
+    });
+    //dispatch(setAlert("Oferta usunięta", "success"));
   } catch (err) {
     dispatch({
       type: OFFER_ERROR,
@@ -84,7 +100,7 @@ export const reserveOffer = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/offers/${id}`);
     dispatch({
-      type: RESERVE_OFFER,
+      type: GET_OFFER,
       payload: res.data,
     });
     //dispatch(setAlert("Oferta usunięta", "success"));

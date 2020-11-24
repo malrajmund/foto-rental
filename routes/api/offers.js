@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {
-  check,
-  validationResault,
-  validationResult,
-} = require("express-validator");
+const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 const fileUpload = require("express-fileupload");
 
@@ -28,26 +24,11 @@ router.post(
     if (req.files === null) {
       return res.status(400).json({ msg: "Nie dodano żadnych zdjęć" });
     }
-
-    /*const uploadedFile = req.files.file;
-    uploadedFile.mv(
-      `../foto-rental/client/public/uploads/${uploadedFile.name}`,
-      (err) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).send(err);
-        }
-        res.json({
-          fileName: uploadedFile.name,
-          filePath: `/uploads/${uploadedFile.name}`,
-        });
-      }
-    );*/
     try {
       const user = await User.findById(req.user.id).select("-password");
       const newOffer = new Offer({
         text: req.body.text,
-        name: user.name,
+        name: user.firstName + " " + user.lastName,
         offerName: req.body.offerName,
         category: req.body.category,
         avatar: user.avatar,
@@ -74,7 +55,7 @@ router.post(
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const offers = await Offer.find().sort({ date: -1 }).select("-image");
+    const offers = await Offer.find().sort({ date: -1 });
     res.json(offers);
   } catch (err) {
     console.error(err.message);
@@ -101,7 +82,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// @route   GET api/offers/myOffers
+// @route   GET api/myOffers
 // @desc    Get wszystkie oferty uzytkownika
 // @access  Public
 router.get("/myOffers/:id", async (req, res) => {
@@ -114,7 +95,7 @@ router.get("/myOffers/:id", async (req, res) => {
   }
 });
 
-// @route   Delete api/offers/:id
+// @route   Delete api/myOffers/:id
 // @desc    Usun oferte
 // @access  Private
 router.delete("/myOffers/:id", auth, async (req, res) => {
@@ -137,6 +118,31 @@ router.delete("/myOffers/:id", auth, async (req, res) => {
     if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "Nie znaleziono oferty" });
     }
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   PUT api/offers/:id
+// @desc    Rezerwacja oferty
+// @access  Private
+router.put("/:id", auth, async (req, res) => {
+  try {
+    const offer = await Offer.findById(req.params.id);
+    const user = await User.findById(req.user.id).select("-password");
+    const newReservation = {
+      user: user.id,
+      message: req.body.message,
+      name: user.firstName + " " + user.lastName,
+      avatar: user.avatar,
+      date: Date.now(),
+      date_in: req.body.date_in,
+      date_out: req.body.date_out,
+    };
+    offer.reservation.push(newReservation);
+    offer.save();
+    res.json(offer);
+  } catch (err) {
+    console.log(err.message);
     res.status(500).send("Server Error");
   }
 });

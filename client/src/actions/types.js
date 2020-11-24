@@ -12,4 +12,5 @@ export const OFFER_ERROR = "OFFER_ERROR";
 export const ADD_OFFER = "ADD_OFFER";
 export const GET_USER_OFFERS = "GET_USER_OFFERS";
 export const DELETE_OFFER = "DELETE_OFFER";
+export const GET_OFFER = "GET_OFFER";
 export const RESERVE_OFFER = "RESERVE_OFFER";

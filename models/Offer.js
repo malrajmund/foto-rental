@@ -6,6 +6,9 @@ const OfferSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
+  name: {
+    type: String,
+  },
   text: {
     type: String,
     required: true,
@@ -38,9 +41,33 @@ const OfferSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  reserved: {
-    type: Array,
-  },
+  reservation: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      message: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      avatar: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+      date_in: {
+        type: Date,
+      },
+      date_out: {
+        type: Date,
+      },
+    },
+  ],
 });
 
 module.exports = Offer = mongoose.model("offer", OfferSchema);

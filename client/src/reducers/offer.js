@@ -4,12 +4,11 @@ import {
   ADD_OFFER,
   GET_USER_OFFERS,
   DELETE_OFFER,
-  RESERVE_OFFER,
+  GET_OFFER,
 } from "../actions/types";
 
 const initialState = {
   offers: [],
-  offer: null,
   loading: true,
   error: {},
 };
@@ -42,7 +41,7 @@ export default function (state = initialState, action) {
         offers: state.offers.filter((offer) => offer._id !== payload),
         loading: false,
       };
-    case RESERVE_OFFER:
+    case GET_OFFER:
       return {
         ...state,
         offers: payload,
