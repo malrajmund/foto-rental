@@ -8,7 +8,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import OfferForm from "./components/offers/OfferForm";
 import myOffers from "./components/offers/myOffers";
-import Offer from "./components/offers/OfferReservationForm";
+import OfferReservationForm from "./components/offers/OfferReservationForm";
+import myReservations from "./components/offers/myReservations";
+import Footer from "./components/layout/Footer";
 
 // Redux
 import { Provider } from "react-redux";
@@ -16,7 +18,6 @@ import store from "./store";
 import "./stylesheets/App.css";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
-import OfferReservationForm from "./components/offers/OfferReservationForm";
 
 const App = () => {
   useEffect(() => {
@@ -44,10 +45,16 @@ const App = () => {
                 path='/offers/:id'
                 component={OfferReservationForm}
               />
+              <PrivateRoute
+                exact
+                path='/myReservations/:id'
+                component={myReservations}
+              />
             </Switch>
           </body>
         </Fragment>
       </Router>
+      <Footer />
     </Provider>
   );
 };

@@ -126,7 +126,6 @@ router.delete("/myOffers/:id", auth, async (req, res) => {
 // @desc    Rezerwacja oferty
 // @access  Private
 router.put("/:id", auth, async (req, res) => {
-  console.log(req.body);
   try {
     const offer = await Offer.findById(req.params.id);
     const user = await User.findById(req.user.id).select("-password");
@@ -138,6 +137,7 @@ router.put("/:id", auth, async (req, res) => {
       date: Date.now(),
       date_in: req.body.startDate,
       date_out: req.body.endDate,
+      isAccepted: false,
     };
     offer.reservation.push(newReservation);
     offer.save();

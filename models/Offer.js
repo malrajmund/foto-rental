@@ -66,6 +66,10 @@ const OfferSchema = new Schema({
       date_out: {
         type: Date,
       },
+      isAccepted: {
+        type: Boolean,
+        default: false,
+      },
     },
   ],
 });

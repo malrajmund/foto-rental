@@ -5,6 +5,7 @@ import { getOffers } from "../../actions/offer";
 import { Spinner } from "reactstrap";
 import offer from "../../reducers/offer";
 import OfferItem from "./OfferItem";
+import "../../stylesheets/ItemCardList.css";
 
 const Offers = ({ getOffers, offer: { offers, loading } }) => {
   useEffect(() => {
@@ -14,14 +15,24 @@ const Offers = ({ getOffers, offer: { offers, loading } }) => {
   return loading ? (
     <Spinner color='primary' />
   ) : (
-    <Fragment>
-      <h1>Oferty</h1>
-      <div className='offers'>
-        {offers.map((offer) => (
-          <OfferItem key={offer._id} offer={offer} />
-        ))}
+    <div className='item_card_list'>
+      <div className='list_desc'>
+        <p className='item_list_title'>Popularne oferty</p>
+        <a className='item_list_link' href='/'>
+          Zobacz wszystkie
+        </a>
       </div>
-    </Fragment>
+
+      <div className='scrollable_list'>
+        <div className='scrollable_row'>
+          {offers.map((offer) => (
+            <div className='scrollable_col'>
+              <OfferItem key={offer._id} offer={offer} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

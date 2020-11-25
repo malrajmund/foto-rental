@@ -5,9 +5,14 @@ import { connect } from "react-redux";
 
 const Dashboard = ({ auth: { id } }) => {
   return (
-    <Link to={`/myOffers/${id}`} className='btn btn-primary'>
-      Moje oferty
-    </Link>
+    <Fragment>
+      <Link to={`/myOffers/${id}`} className='btn btn-primary'>
+        Moje oferty
+      </Link>
+      <Link to={`/myReservations/${id}`} className='btn btn-secondary'>
+        Moje rezerwacje
+      </Link>
+    </Fragment>
   );
 };
 

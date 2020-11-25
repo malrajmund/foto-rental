@@ -1,0 +1,50 @@
+.item_card{
+    color: black;
+    width: 246px;
+    transition: transform .4s;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.item_card:hover{
+    transform: scale(1.05);
+}
+.item_img{
+    margin: 0;
+    width: 246px;
+    height: 164px;
+}
+.item_card_icon{
+    margin: 0;
+    width: 20px;
+    height: 20px;
+}
+.item_price{
+    margin: 1px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.item_price2{
+    margin: 1px;
+    font-size: 16px;
+}
+.person_info{
+    margin: 1px;
+    font-size: 14px;
+}
+.item_title{
+    margin: 1px;
+    font-size: 16px;
+    white-space: normal;
+}
+.item_link:link{
+    text-decoration: none;
+}
+.item_link:visited{
+    text-decoration: none;
+}
+.item_link:hover{
+    text-decoration: none;
+}
+.item_link:active{
+    text-decoration: none;
+}

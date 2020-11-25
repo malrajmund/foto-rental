@@ -1,0 +1,21 @@
+.search_input{
+    padding: 1px !important;
+}
+#search_button{
+    background-color:#FF5617;
+    border-radius: 1px 10px 10px 1px;
+    border: 1px solid #FF5617;
+}
+#item_category{
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 1px;
+    border: 0;
+}
+#searchbar{
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 10px 1px 1px 10px;
+    border: 0;
+}
+.search_form{
+    margin-top: 0;
+}
