@@ -5,6 +5,7 @@ import {
   GET_USER_OFFERS,
   DELETE_OFFER,
   GET_OFFER,
+  RESERVE_OFFER,
 } from "../actions/types";
 
 const initialState = {
@@ -42,6 +43,12 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case GET_OFFER:
+      return {
+        ...state,
+        offers: payload,
+        loading: false,
+      };
+    case RESERVE_OFFER:
       return {
         ...state,
         offers: payload,

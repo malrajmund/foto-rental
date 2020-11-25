@@ -10,15 +10,11 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import add_photo_img from "../../img/icons/baseline_add_photo_alternate_black_18dp.png";
-import remove_photo_img from "../../img/icons/baseline_image_not_supported_black_18dp.png";
-import item_img from "../../img/img/rokinon_set.png";
 import "../../stylesheets/NewOffer.css";
 import { connect } from "react-redux";
 import { addOffer } from "../../actions/offer";
 import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
-import axios from "axios";
 import Alert from "../layout/Alert";
 
 const OfferForm = ({ addOffer }) => {
@@ -30,11 +26,8 @@ const OfferForm = ({ addOffer }) => {
   });
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [uploadedFile, setUploadedFile] = useState({});
 
   const { text, offerName, avatar, pricePerDay } = formData;
-
-  //const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();

@@ -7,6 +7,7 @@ import {
   GET_USER_OFFERS,
   DELETE_OFFER,
   GET_OFFER,
+  RESERVE_OFFER,
 } from "./types";
 
 export const getOffers = () => async (dispatch) => {
@@ -96,14 +97,22 @@ export const deleteOffer = (id) => async (dispatch) => {
   }
 };
 
-export const reserveOffer = (id) => async (dispatch) => {
+export const reserveOffer = ({ message, startDate, endDate }, id) => async (
+  dispatch
+) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({ message, startDate, endDate });
   try {
-    const res = await axios.get(`/api/offers/${id}`);
+    const res = await axios.put(`/api/offers/${id}`, body, config);
     dispatch({
-      type: GET_OFFER,
+      type: RESERVE_OFFER,
       payload: res.data,
     });
-    //dispatch(setAlert("Oferta usunięta", "success"));
+    dispatch(setAlert("Pomyślnie wysłano prośbę o rezerwacje!", "success"));
   } catch (err) {
     dispatch({
       type: OFFER_ERROR,

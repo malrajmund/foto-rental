@@ -5,7 +5,6 @@ import { deleteOffer } from "../../actions/offer";
 import { Link } from "react-router-dom";
 
 const OfferItem = ({
-  auth,
   deleteOffer,
   offer: { _id, text, offerName, name, avatar, pricePerDay, file, date },
 }) => {
@@ -24,7 +23,11 @@ const OfferItem = ({
           alt={file.name}
         />
       </div>
-      <button onClick={(e) => deleteOffer(_id)} type='button'>
+      <button
+        onClick={(e) => deleteOffer(_id)}
+        type='button'
+        className='btn btn-primary'
+      >
         Usun
       </button>
       <Link to={`/offers/${_id}`} className='btn btn-primary'>
