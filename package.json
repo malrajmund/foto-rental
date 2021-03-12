@@ -23,6 +23,8 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "config": "^3.3.2",
+    "cors": "^2.8.5",
+    "dependencies": "0.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
@@ -32,7 +34,12 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.9",
     "multer": "^1.4.2",
-    "request": "^2.88.2"
+    "nodemailer": "^6.4.17",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "request": "^2.88.2",
+    "stripe": "^8.129.0",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.6"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
