@@ -1,50 +1,57 @@
-import React, { Fragment } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { deleteOffer } from "../../actions/offer";
-import { Link } from "react-router-dom";
-import item_img from "../../img/img/item_thumb.png";
 import "../../stylesheets/ItemCard.css";
-import person_icon from "../../img/icons/baseline_person_black_18dp.png";
-import grade_icon from "../../img/icons/baseline_grade_black_18dp.png";
+import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
 
-const OfferItem = ({
-  deleteOffer,
-  offer: { _id, text, offerName, name, avatar, pricePerDay, file, date },
-}) => {
+const OfferItem = ({ offer: { _id, offerName, name, pricePerDay, file }, }) => {
+  const [activeHeight, setActiveHeight] = useState(0);
+  const setHeight = height => {
+    if (activeHeight !== height) setActiveHeight(height);
+  }
+  useLayoutEffect(() => {
+    setTimeout(() => setHeight(document.getElementById("my_item_card_img")?.getBoundingClientRect().width), 100);
+  })
+  useEffect(() => {
+    function handleResize() {
+      setHeight(document.getElementById("my_item_card_img")?.getBoundingClientRect().width);
+    }
+    window.addEventListener('resize', handleResize);
+  })
+
   return (
     <a className='item_link' href={`/offers/${_id}`}>
-      <div className='item_card'>
-        <img
-          className='item_img'
-          width='250px'
-          height='250px'
+      <Card className='item_card'>
+        <CardImg
+          id='my_item_card_img'
+          className='img_square'
+          style={{ height: activeHeight * 0.8 }}
+          top
           src={"data:image/jpeg;base64," + file.data}
           alt={file.name}
         />
-        <p className='item_price'>Cena za dzien: {pricePerDay} zł</p>
-        <p className='person_info'>Imie i nazwisko: {name}</p>
-        <p className='item_title'>Nazwa: {offerName}</p>
-        <button
-          onClick={(e) => deleteOffer(_id)}
-          type='button'
-          className='btn btn-primary'
-        >
-          Usun
-        </button>
-      </div>
+        <CardBody className='item_cardbody'>
+          <CardTitle className='item_price'>
+            {pricePerDay}zł <small className='item_price2'>/dzień</small>
+          </CardTitle>
+          <CardText>
+            <span className='span_grade person_info'>
+              <i className='material-icons size24'>person</i>
+              {name}
+              <i className='material-icons orange size24 grade_margin'>grade</i>
+              <b>4.5</b>
+            </span>
+            <p className='item_title'>{offerName}</p>
+          </CardText>
+        </CardBody>
+      </Card>
     </a>
   );
 };
-
 OfferItem.propTypes = {
   offer: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
-  deleteOffer: PropTypes.func.isRequired,
 };
-
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-
-export default connect(mapStateToProps, { deleteOffer })(OfferItem);
+export default connect(mapStateToProps, {})(OfferItem);

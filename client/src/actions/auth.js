@@ -40,6 +40,7 @@ export const register = ({
   postCode,
   phoneNumber,
   password,
+  billingNumber,
 }) => async (dispatch) => {
   const config = {
     headers: {
@@ -57,6 +58,7 @@ export const register = ({
     postCode,
     phoneNumber,
     password,
+    billingNumber,
   });
 
   try {
@@ -100,7 +102,7 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
+    const errors = err.response?.data.errors;
 
     if (errors) {
       document.documentElement.scrollTop = 0;
@@ -114,6 +116,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  window.location.reload();
   dispatch({
     type: LOGOUT,
   });

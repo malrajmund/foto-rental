@@ -24,9 +24,6 @@
 .scrollable_list > .scrollable_row > .scrollable_col{
     display: inline-block;
 }
-.scrollable_col{
-    margin: 19px;
-}
 .list_desc{
     margin-left: 20px;
 }

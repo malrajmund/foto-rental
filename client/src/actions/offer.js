@@ -8,6 +8,8 @@ import {
   DELETE_OFFER,
   GET_OFFER,
   RESERVE_OFFER,
+  REMOVE_RESERVATION_AS_OWNER,
+  GET_RESERVATIONS,
 } from "./types";
 
 export const getOffers = () => async (dispatch) => {
@@ -97,22 +99,26 @@ export const deleteOffer = (id) => async (dispatch) => {
   }
 };
 
-export const reserveOffer = ({ message, startDate, endDate }, id) => async (
-  dispatch
-) => {
+export const reserveOffer = (
+  message,
+  startDate,
+  endDate,
+  id,
+  totalCost
+) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ message, startDate, endDate });
+  const body = JSON.stringify({ message, startDate, endDate, totalCost });
   try {
     const res = await axios.put(`/api/offers/${id}`, body, config);
     dispatch({
       type: RESERVE_OFFER,
       payload: res.data,
     });
-    dispatch(setAlert("Pomyślnie wysłano prośbę o rezerwacje!", "success"));
+    dispatch(setAlert("Pomyślnie zarezerwowano!", "success"));
   } catch (err) {
     dispatch({
       type: OFFER_ERROR,
@@ -120,3 +126,38 @@ export const reserveOffer = ({ message, startDate, endDate }, id) => async (
     });
   }
 };
+
+export const removeReservationAsOwner = (id, offerId) => async (dispatch) => {
+  try {
+    const res = await axios.patch(`/api/offers/${id}`, {
+      params: { id: id, offerId: offerId },
+    });
+
+    dispatch({
+      type: REMOVE_RESERVATION_AS_OWNER,
+      payload: id,
+    });
+    dispatch(setAlert("Rezerwacja usunięta!", "success"));
+  } catch (err) {
+    dispatch({
+      type: OFFER_ERROR,
+      payload: "git",
+    });
+  }
+};
+
+export const getReservations = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/offers/reservations/${id}`);
+    dispatch({
+      type: GET_RESERVATIONS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: OFFER_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+

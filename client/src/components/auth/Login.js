@@ -39,7 +39,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <div>
+      <div id='login_background'>
         <Jumbotron className='jumbo' fluid>
           <Container fluid>
             <Row>
@@ -50,8 +50,8 @@ const Login = ({ login, isAuthenticated }) => {
             </Row>
           </Container>
         </Jumbotron>
-        <Alert />
         <div className='login_form'>
+          <Alert />
           <Form onSubmit={(e) => onSubmit(e)}>
             <div className='login_form_items'>
               <FormGroup>

@@ -6,6 +6,7 @@ import {
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  SEARCH_OFFERS,
 } from "../actions/types";
 
 const initialState = {
@@ -46,6 +47,12 @@ export default function (state = initialState, action) {
         ...state,
         token: null,
         isAuthenticated: false,
+        loading: false,
+      };
+    case SEARCH_OFFERS:
+      return {
+        ...state,
+        user: payload,
         loading: false,
       };
     default:

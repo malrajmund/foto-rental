@@ -2,10 +2,12 @@
     color: black;
     width: 246px;
     transition: transform .4s;
+    border-color: white;
     margin-top: 5px;
     margin-bottom: 10px;
 }
 .item_card:hover{
+    border-color: lightgray;
     transform: scale(1.05);
 }
 .item_img{
@@ -28,12 +30,13 @@
     font-size: 16px;
 }
 .person_info{
-    margin: 1px;
-    font-size: 14px;
+    font-size: 15px;
 }
 .item_title{
+    word-break: normal;
+    word-wrap: break-word;
     margin: 1px;
-    font-size: 16px;
+    font-size: 18px;
     white-space: normal;
 }
 .item_link:link{
@@ -47,4 +50,15 @@
 }
 .item_link:active{
     text-decoration: none;
+}
+.material-icons.orange{
+    color: orange;
+}
+.grade_margin{
+    margin-left: 10px;
+}
+.item_cardbody{
+    min-height: 170px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }

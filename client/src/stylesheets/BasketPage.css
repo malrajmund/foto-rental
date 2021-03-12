@@ -1,0 +1,23 @@
+#basket_container{
+    margin: auto;
+    max-width: 1200px;
+    margin-top: 50px;
+}
+#basket_items{
+    min-height: 765px;
+}
+.cart_reserve_button{
+    width: 100%;
+    height: 50%;
+    border: 1px solid lightgray;
+    border-radius: 0px 0px 3px 0px;
+}
+.cart_remove_button{
+    width: 100%;
+    height: 50%;
+    border: 1px solid lightgray;
+    border-radius: 0px 3px 0px 0px;
+}
+#item_buttons_col{
+    padding-left: 0;
+}

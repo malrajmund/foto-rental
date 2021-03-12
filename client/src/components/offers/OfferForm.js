@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import {
   FormGroup,
   Input,
@@ -13,47 +14,68 @@ import {
 import "../../stylesheets/NewOffer.css";
 import { connect } from "react-redux";
 import { addOffer } from "../../actions/offer";
-import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
 import Alert from "../layout/Alert";
+import { getCategories } from '../../actions/category';
+import { useHistory } from "react-router-dom";
 
-const OfferForm = ({ addOffer }) => {
+const OfferForm = ({ addOffer, getCategories, category: { categories } }) => {
+  useEffect(() => {
+    getCategories();
+  }, [getCategories]);
+  let history = useHistory();
   const [formData, setFormData] = useState({
     text: "",
     offerName: "",
-    avatar: "",
     pricePerDay: "",
+    pricePerWeek: "",
+    annulPriceTo: "",
+    annulPriceAbove: "",
+    category: null,
   });
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
 
-  const { text, offerName, avatar, pricePerDay } = formData;
+  const {
+    text,
+    offerName,
+    pricePerDay,
+    pricePerWeek,
+    annulPriceTo,
+    annulPriceAbove,
+    category,
+  } = formData;
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
     formData.append("text", text);
+    formData.append("category", category);
     formData.append("pricePerDay", pricePerDay);
     formData.append("offerName", offerName);
+    formData.append("pricePerWeek", pricePerWeek);
+    formData.append("annulPriceTo", annulPriceTo);
+    formData.append("annulPriceAbove", annulPriceAbove);
     addOffer(formData);
+    // history.push('/dashboard');
   };
 
   return (
-    <div>
-      <Alert />
+    <div id='offerform_background'>
       <div className='new_offer_form'>
-        <Jumbotron className='jumbo_offer' fluid>
+        <Jumbotron className='jumbo_offer bg-transparent'>
           <Form onSubmit={(e) => onSubmit(e)}>
             <Container fluid>
               <h1 className='display-4'>Wystaw przedmiot</h1>
-
               <FormGroup>
                 <Label for='item_title'>*Tytuł oferty</Label>
                 <Input
                   type='text'
                   name='offerName'
                   id='offerName'
+                  minLength='30'
+                  maxLength='55'
                   placeholder='Tytuł oferty'
                   value={offerName}
                   onChange={(e) =>
@@ -70,6 +92,8 @@ const OfferForm = ({ addOffer }) => {
                   type='textarea'
                   name='text'
                   id='text'
+                  minLength='100'
+                  maxLength='1000'
                   placeholder='Opisz swoją ofertę'
                   value={text}
                   onChange={(e) =>
@@ -81,34 +105,25 @@ const OfferForm = ({ addOffer }) => {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for='item_category'>*Kategoria</Label>
-                <Input type='select' name='item_category' id='item_category'>
-                  <option selected disabled>
+                <Label for='category'>*Kategoria</Label>
+                <Input
+                  type='select'
+                  name='category'
+                  id='category'
+                  value={category}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                >
+                  <option value={null} selected disabled>
                     --- Wybierz Kategorię ---
                   </option>
-                  <optgroup label='Aparaty cyfrowe'>
-                    <option>Bezlusterkowce</option>
-                    <option>Lustrzanki</option>
-                  </optgroup>
-                  <optgroup label='Kamery kinowe'>
-                    <option>Zestawy</option>
-                    <option>Samo body</option>
-                  </optgroup>
-                  <optgroup label='Obiektywy'>
-                    <option>Stałoogniskowe</option>
-                    <option>Zmiennoogniskowe</option>
-                    <option>Zestawy</option>
-                  </optgroup>
-                  <optgroup label='Statywy, monopody, itp.'>
-                    <option>Statywy</option>
-                    <option>Monopody</option>
-                    <option>Gimbale</option>
-                    <option>Stabilizatory</option>
-                  </optgroup>
-                  <optgroup label='Nośniki danych'>
-                    <option>Karty pamięci</option>
-                    <option>Dyski</option>
-                  </optgroup>
+                  {categories.map((category) => (
+                    <option value={category._id}>{category.name}</option>
+                  ))}
                 </Input>
               </FormGroup>
               <Row>
@@ -118,7 +133,6 @@ const OfferForm = ({ addOffer }) => {
                     <Input
                       type='number'
                       name='pricePerDay'
-                      id='pricePerDay'
                       placeholder='Podaj cenę w PLN'
                       value={pricePerDay}
                       onChange={(e) =>
@@ -135,9 +149,15 @@ const OfferForm = ({ addOffer }) => {
                     <Label for='week_price'>Cena za tydzień najmu</Label>
                     <Input
                       type='number'
-                      name='week_price'
-                      id='week_price'
+                      name='pricePerWeek'
                       placeholder='Podaj cenę w PLN'
+                      value={pricePerWeek}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                     />
                   </FormGroup>
                 </Col>
@@ -150,9 +170,17 @@ const OfferForm = ({ addOffer }) => {
                     </Label>
                     <Input
                       type='number'
-                      name='day_price'
-                      id='day_price'
-                      placeholder='Podaj cenę w PLN'
+                      max='100'
+                      min='0'
+                      name='annulPriceTo'
+                      placeholder='Podaj % łącznego kosztu rezerwacji'
+                      value={annulPriceTo}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                     />
                   </FormGroup>
                 </Col>
@@ -163,9 +191,17 @@ const OfferForm = ({ addOffer }) => {
                     </Label>
                     <Input
                       type='number'
-                      name='week_price'
-                      id='week_price'
-                      placeholder='Podaj cenę w PLN'
+                      max='100'
+                      min='0'
+                      name='annulPriceAbove'
+                      placeholder='Podaj % łącznego kosztu rezerwacji'
+                      value={annulPriceAbove}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                     />
                   </FormGroup>
                 </Col>
@@ -190,19 +226,18 @@ const OfferForm = ({ addOffer }) => {
                           setFileName(e.target.files[0].name);
                         }}
                       />
-                      <label htmlFor='customFile'>{fileName}</label>
                     </Fragment>
                     <hr className='my-2' />
                   </Col>
                 </FormGroup>
               </Row>
-              <FormGroup check>
+              {/* <FormGroup check>
                 <Label check>
                   <Input type='checkbox' /> Bezpłatne odwołanie do 24h od
                   dokonania rezerwacji
                 </Label>
-              </FormGroup>
-
+              </FormGroup> */}
+              <Alert />
               <FormGroup className='submit_form'>
                 <Label for='submit_button'>
                   <small>
@@ -231,6 +266,12 @@ const OfferForm = ({ addOffer }) => {
 
 OfferForm.propTypes = {
   addOffer: PropTypes.func.isRequired,
+  getCategories: PropTypes.func.isRequired,
+  category: PropTypes.object.isRequired,
 };
 
-export default connect(null, { setAlert, addOffer })(OfferForm);
+const mapStateToProps = (state) => ({
+  category: state.category
+})
+
+export default connect(mapStateToProps, { setAlert, addOffer, getCategories })(OfferForm);

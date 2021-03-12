@@ -7,17 +7,21 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import OfferForm from "./components/offers/OfferForm";
-import myOffers from "./components/offers/myOffers";
 import OfferReservationForm from "./components/offers/OfferReservationForm";
-import myReservations from "./components/offers/myReservations";
 import Footer from "./components/layout/Footer";
-
+import "material-design-icons/iconfont/material-icons.css";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
 import "./stylesheets/App.css";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import BasketPage from "./components/basket/BasketPage";
+import DashboardMyOffers from "./components/dashboard/DashboardMyOffers";
+import DashboardMyRes from "./components/dashboard/DashboardMyRes";
+import SearchPage from "./components/search/SearchPage";
+import DashboardChat from './components/dashboard/DashboardChat';
+import TempAdminPanel from "./components/misc/TempAdminPanel";
 
 const App = () => {
   useEffect(() => {
@@ -33,23 +37,19 @@ const App = () => {
         <Fragment>
           <NavBar />
           <body>
-            <Route exact path='/' component={Landing} />
             <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/adminpanel' component={TempAdminPanel} />
+              <Route exact path='/search/results' component={SearchPage} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/OfferForm' component={OfferForm} />
-              <PrivateRoute exact path='/myOffers/:id' component={myOffers} />
-              <PrivateRoute
-                exact
-                path='/offers/:id'
-                component={OfferReservationForm}
-              />
-              <PrivateRoute
-                exact
-                path='/myReservations/:id'
-                component={myReservations}
-              />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute exact path='/chat' component={DashboardChat} />
+              <PrivateRoute exact path='/myOffers/:id' component={DashboardMyOffers} />
+              <Route exact path='/basket/:id' component={BasketPage} />
+              <Route exact path='/offers/:id' component={OfferReservationForm} />
+              <PrivateRoute exact path='/myReservations/:id' component={DashboardMyRes} />
             </Switch>
           </body>
         </Fragment>
