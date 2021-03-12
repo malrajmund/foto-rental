@@ -20,7 +20,8 @@ const OfferSchema = new Schema({
     type: String,
   },
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "categories",
   },
   pricePerDay: {
     type: Number,
@@ -41,11 +42,18 @@ const OfferSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  status: {
+    type: String,
+    default: "Aktywna",
+  },
   reservation: [
     {
       user: {
         type: Schema.Types.ObjectId,
         ref: "users",
+      },
+      totalCost: {
+        type: String,
       },
       message: {
         type: String,
@@ -66,9 +74,9 @@ const OfferSchema = new Schema({
       date_out: {
         type: Date,
       },
-      isAccepted: {
-        type: Boolean,
-        default: false,
+      status: {
+        type: String,
+        default: "nadchodząca",
       },
     },
   ],
