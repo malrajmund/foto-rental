@@ -4,19 +4,19 @@ const { check, validationResult } = require("express-validator");
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { restart } = require("nodemon");
 const config = require("config");
-const nodemailer = require('nodemailer');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
-const sendgrid_api_key = config.get('sendgrid_api_key');
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+const sendgrid_api_key = config.get("sendgrid_api_key");
 const User = require("../../models/User");
 
-
-const transporter = nodemailer.createTransport(sendgridTransport({
-  auth: {
-    api_key: sendgrid_api_key
-  }
-}))
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: sendgrid_api_key,
+    },
+  })
+);
 // @route   POST api/users
 // @desc    Register user
 // @access  Public
@@ -91,15 +91,17 @@ router.post(
 
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
-      await user.save().then(user => {
+      await user.save().then((user) => {
         transporter.sendMail({
           to: user.email,
           from: "fotorental.noreply@gmail.com",
           subject: "Witamy w Fotorental!",
-          html: "<h1>Witaj, " + user.firstName + "!</h1><h2>Rejestracja Twojego konta przebiegła pomyślnie, teraz możesz wypożyczać sprzęt od innych użytkowników oraz wystawiać własne oferty.</h2><a href='http://localhost:3000/dashboard'>Przejdź na Fotorental</a>"
-        })
-      }
-      )
+          html:
+            "<h1>Witaj, " +
+            user.firstName +
+            "!</h1><h2>Rejestracja Twojego konta przebiegła pomyślnie, teraz możesz wypożyczać sprzęt od innych użytkowników oraz wystawiać własne oferty.</h2><a href='http://localhost:3000/dashboard'>Przejdź na Fotorental</a>",
+        });
+      });
 
       const payload = {
         user: {
