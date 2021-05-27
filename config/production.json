@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://rajmund123:rajmund123@fotorentalcluster.ddhnb.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "secretToken",
+    "sendgrid_api_key": "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"
+}
