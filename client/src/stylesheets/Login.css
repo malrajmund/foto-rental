@@ -1,0 +1,53 @@
+.jumbo {
+    margin-top: 19px;
+    padding: 30px !important;
+    height: 90px !important;
+    background-color: #6DEAEA !important;
+}
+.login_form {
+    margin: auto;
+    width: 800px;
+    margin-top: 100px;
+    padding-bottom: 15%;
+    padding-top: 0;
+}
+.login_form_items{
+    background-color: rgba(216, 231, 232, 0.66);
+    margin: auto;
+    margin-top: 50px;
+    width: 500px;
+    padding: 50px;
+    padding-top: 30px;
+    border-radius: 20px;
+}
+.submit_button {
+    background-color: #109E9E !important;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.link{
+    font-weight: 500;
+    color: black !important;
+}
+.text{
+    margin-top: 7px;
+}
+@media only screen and (max-width: 800px){
+    .login_form{
+        margin: auto;
+        margin-top: 10%;
+        width: 100%;
+        padding: 20px;
+    }
+    .login_form_items{
+        width: 100%;
+        max-width: 400px;
+    }
+}
+#login_background{
+    background-image: url(../img/img/background3.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

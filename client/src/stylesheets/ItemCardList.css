@@ -1,0 +1,29 @@
+.item_card_list{
+    margin: 0%;
+    margin-top: 2%;
+}
+.item_list_title{
+    font-size: 28px;
+    margin: 0;
+}
+.item_list_link{
+    color: crimson;
+    margin: 0;
+    font-size: 16px;
+}
+.item_list_link:hover{
+    color: crimson;
+}
+.scrollable_list > .scrollable_row {
+    flex-wrap: nowrap;
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.scrollable_list > .scrollable_row > .scrollable_col{
+    display: inline-block;
+}
+.list_desc{
+    margin-left: 20px;
+}

@@ -1,0 +1,48 @@
+.mainpage_container{
+    margin-top: 19px;
+}
+.centered{
+    padding-top: 4%;
+    padding-bottom: 1%;
+}
+.background_image{
+    background-image: url(../img/img/background.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title{
+    text-align: center;
+    color: whitesmoke;
+    font-weight: normal;
+    text-shadow: 2px 1px 2px black;
+}
+.subtitle{
+    text-align: center;
+    color: whitesmoke;
+    font-weight: 700;
+    text-shadow: 2px 1px 2px black;
+}
+.front_text{
+    color: whitesmoke;
+    text-align: center;
+}
+.front_link{
+    color: #9A9A9A;
+}
+.front_link:hover{
+    color: #9A9A9A;
+}
+
+.search_bar{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 550px;
+    margin-top: 70px;
+    margin-bottom: 160px;
+}
+.lists_container{
+    margin: 5%;
+    margin-top: 2%;
+}

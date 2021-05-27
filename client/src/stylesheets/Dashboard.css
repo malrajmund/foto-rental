@@ -1,0 +1,321 @@
+#asdasd{
+    background-color: #d2e3e9;
+    padding-top: 30px;
+    margin-bottom: 0;
+    padding-bottom: 30px;
+}
+#dashboard_container{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    max-width: 1100px;
+}
+#dashboard_tabs{
+    margin-top: 20px;
+}
+.listgroup_item{
+    color: black;
+}
+.listgroup_item:hover{
+    color: black;
+}
+.card_button{
+    width: 100%;
+    height: 50%;
+    border: 1px solid lightgray;
+    border-radius: 0px 0px 3px 0px;
+}
+.card_button img{
+    transition: .4s;
+}
+.card_button_clicked{
+    transform: rotate(-180deg);
+
+}
+.card_remove_button{
+    width: 100%;
+    height: 50%;
+    border: 1px solid lightgray;
+    border-radius: 0px 3px 0px 0px;
+}
+.item_link{
+    color: black;
+}
+.item_link:link{
+    text-decoration: none;
+}
+.item_link:visited{
+    text-decoration: none;
+}
+.item_link:hover{
+    text-decoration: none;
+}
+.item_link:active{
+    text-decoration: none;
+}
+#item_card_col{
+    padding-right: 0;
+    padding-left: 0;
+}
+#item_buttons_col{
+    padding-left: 0;
+    padding-right: 0;
+}
+.table_button{
+    margin: 0;
+}
+.table_button{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    height: 30px;
+    width: 35px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+.table_button i{
+    margin-left: auto;
+    margin-right: auto;
+}
+.my_item_card{
+    border-radius: 3px 0px 0px 3px;
+}
+#reservations_collapse{
+    border: 1px solid lightgray;
+    border-top: none;
+}
+#user_info_table th{
+    font-weight: normal;
+}
+.card_title{
+    float: right;
+    margin-top: 35px;
+    margin-right: 50px;
+}
+/* .card_icon{
+} */
+.material-icons.card_icon{
+    font-size: 70px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 100px;
+    width: 100px;
+    border-right: 2px solid lightgray;
+}
+.card_icon_svg{
+    height: 100px;
+}
+.card_top{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    border-bottom: 2px solid lightgray;
+}
+.dashboard_user_card{
+    height: 400px;
+}
+#user_grades_table th{
+    font-weight: normal;
+    font-size: 21px;
+}
+.separator{
+    margin-top: 20px !important;
+    margin-bottom: 40px !important;
+}
+#chat_link{
+    font-size: 22px;
+    margin-top: 75px;
+    float: right;
+}
+.card_rent_button{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border-color: lightgray;
+    transition: 0.5s;
+    color: black;
+}
+.card_rent_button:hover{
+    transform: scale(1.1);
+}
+.card_middle h5{
+    margin-top: 20px;
+}
+#myoffers_submit_button{
+    margin-top: 27px;
+}
+#tab_separator{
+    height: 70px;
+    background-image: linear-gradient(white,#EAEDEE);
+}
+.jumbotron_content{
+    margin: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#res_table_body th{
+    font-weight: normal;
+}
+#dashboard_jumbo{
+    margin-bottom: 0 !important;
+}
+.no_right_padding{
+    padding-right: 0%;
+}
+.no_left_padding{
+    padding-left: 0%;
+}
+.navlink_unactive{
+    color: gray;
+}
+.navlink_unactive:hover{
+    color: black;
+}
+.card_dropdown{
+    width: 100%;
+    height: 50%;
+    border: 1px solid lightgray;
+    border-radius: 0px 0px 3px 0px;
+}
+.card_dropdown img{
+    transition: .4s;
+}
+.card_dropdown_clicked{
+    transform: rotate(-180deg);
+
+}
+.card_pay_button{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    border: 1px solid lightgray;
+    border-radius: 0px 3px 0px 0px;
+}
+.card_dropdown_button{
+    height: 100%;
+    width: 100%;
+}
+.card_text_info{
+    margin-bottom: 0px;
+}
+.card_pay_button div{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card_pay_button i{
+    margin-left: 5px;
+}
+.empty_offer_array{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+#chat_container{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid lightgray;
+    min-height: 365px;
+    border-radius: 3px;
+}
+#send_message_btn{
+    width: 100%;
+    border-radius: 0px 0px 6px 0px;
+}
+#chat_title{
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    margin-bottom: 8px;
+}
+#chatuser_list{
+    overflow-y: auto;
+    max-height: 500px;
+}
+#messages_list{
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    border: 1px solid lightgray;
+    border-bottom: none;
+    border-radius: 6px 6px 0px 0px;
+    height: 405px;
+}
+#message{
+    border: 1px solid lightgray;
+    border-radius: 0px 0px 0px 6px;
+}
+#message_body{
+    border: none;
+    margin: 10px;
+    float: left;
+}
+#message_content{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    font-size: large;
+    padding: 10px;
+    width: fit-content;
+    max-width: 500px;
+}
+#message_header{
+    font-style: italic;
+    width: 100%;
+    border-bottom: 1px dashed gray;
+    padding-bottom: 10px;
+    font-size: medium;
+    margin-bottom: 10px;
+}
+#message_info{
+    margin-left: 10px;
+    font-size: small;
+    color: gray;
+}
+#message_body_alt{
+    border: none;
+}
+#message_content_alt{
+    float: right !important;
+    background-color: #5bc0de;
+    color: white;
+    border-radius: 10px;
+    font-size: large;
+    padding: 10px;
+    width: fit-content;
+    max-width: 500px;
+}
+#message_header_alt{
+    font-style: italic;
+    width: 100%;
+    border-bottom: 1px dashed white;
+    padding-bottom: 10px;
+    font-size: medium;
+    margin-bottom: 10px;
+}
+#message_info_alt{
+    font-size: small;
+    color: gray;
+    text-align: right;
+    margin-right: 10px;
+}
+.span_grade{
+    display: flex;
+    align-items: center;
+}
+#heading_date{
+    float: right;
+    font-size: medium;
+    font-weight: lighter;
+}
+.col_separate{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+}
+#status_form{
+    max-width: 225px;
+}

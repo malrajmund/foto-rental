@@ -1,0 +1,96 @@
+#page_container{
+    background-color: #EFEFEF;
+}
+#offer_container{
+    padding-top: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white;
+}
+.cat_breadcrubm{
+    margin-left: 0;
+    background-color: white !important;
+}
+.cat_link{
+    margin: 10px;
+    color: #707070;    
+}
+.cat_link:hover{
+    color: #707070;    
+}
+.offer_title{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+#user_summary p{
+    margin: 1%;
+}
+.no_padding_col{
+    padding: 0% !important;
+}
+#item_day_price h4, #item_day_price p{
+    margin: 0%;
+}
+#item_week_price h4, #item_week_price p{
+    margin: 0%;
+    color: gray;
+}
+#item_day_price{
+    border-right: 2px solid gray;
+}
+.no_margin{
+    margin: 0% !important;
+}
+.small_margin{
+    margin: 2px !important;
+}
+#user_info{
+    max-width: 350px !important;
+    min-width: 280px !important;
+}
+#user_info_desc {
+    width: 100%;
+    margin-top: 10px;
+}
+.no_border{
+    border: none !important;
+}
+.section_title{
+    margin-top: 25px;
+    font-weight: normal;
+}
+.section_desc{
+    word-break: normal;
+    word-wrap: break-word;
+    padding-bottom: 25px;
+    /* border-bottom: 1px solid lightgray; */
+}
+#collapse_button{
+    width: 100%;
+}
+#callendar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#callendar h5 {
+    font-weight: normal;
+}
+.material-icons.big{
+    font-size: 150px;
+}
+.icon_button{
+    display: flex;
+    align-items: center;
+}
+.icon_button div {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+.icon_button i {
+    margin-left: 5px;
+}

@@ -1,0 +1,183 @@
+#searchpage_container{
+    padding-top: 40px;
+    background-color: #EFEFEF;
+    padding-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#searchpage_searchbar{
+    clear: both;
+    margin-top: 30px;
+    margin-left: auto;
+    /* width: 80%; */
+    max-width: 550px;
+    margin-bottom: 10px;
+}
+#searchpage_searchinfo{
+    width: 99%;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#searchinfo_title{
+    font-size: xx-large;
+}
+#searchinfo_subtitle{
+    font-size: large;
+    font-weight: lighter;
+    margin-top: auto;
+    margin-bottom: 0px;
+    margin-left: 8px;
+}
+#searchinfo_col{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-top: 54px;
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+}
+#searchresult_col{
+    margin-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+    background-color: inherit;
+    width: 100%;
+}
+.no_margin_container{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+#categories_title{
+    font-size: x-large;
+}
+#categories_container button{
+    font-size: medium;
+}
+#price_carddeck{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.searchitem_username{
+    display: flex;
+}
+.searchitem_username i{
+    margin-left: 5px;
+}
+#sorttype_select{
+    margin-bottom: 10px;
+}
+.no_style_button{
+    background-color: inherit;
+    padding: none;
+    font-size: large;
+    outline: none;
+    border: none;
+    color: black;
+    transition: 0.1s;
+}
+.no_style_button:hover{
+    transform: scale(1.02);
+    background-color: inherit;
+    border: none;
+    color: black;
+}
+.no_style_button:active{
+    outline: none;
+    border: none;
+}
+.no_style_button:focus{
+    outline: none;
+}
+.breadcrumb_button{
+    margin: 10px;
+    color: gray;
+}
+.disabled_button{
+    color: black;
+}
+.disabled_button:hover{
+    transform: none;
+}
+.searchpage_pagination{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.load_spinner{
+    margin-left: 50%;
+    margin-top: 100px;
+}
+#searchpage_first_row{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#day_price{
+    font-size: x-large;
+}
+#day_price span{
+    font-size: medium;
+}
+#week_price{
+    color: gray;
+    font-size: x-large;
+}
+#week_price span{
+    font-size: medium;
+}
+.full_width{
+    width: 100% !important;
+}
+.no_margin{
+    margin: none !important;
+}
+.img_square{
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+}
+.empty_searchresults{
+    border: 1px solid lightgray;
+    background-color: white;
+    padding-left: 5%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    border-radius: 5px;
+    margin-top: 54px;
+
+}
+.no_style_button_disabled{
+    background-color: inherit;
+    padding: none;
+    font-size: large;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    color: black;
+}
+.items_button{
+    background-color: inherit;
+    padding: none;
+    font-size: medium;
+    outline: none;
+    border: none;
+    color: gray;
+}
+.items_button:hover{
+    background-color: inherit;
+    border: none;
+    color: black;
+}
+.items_button:active{
+    outline: none;
+    border: none;
+}
+.items_button:focus{
+    outline: none;
+}
+.items_button:disabled{
+    color: black;
+    font-size: large;
+}
